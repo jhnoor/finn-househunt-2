@@ -14,8 +14,10 @@ def filter_apartments(apt):
     # checks if key is in dictionary
     if ('price_suggestion' not in apt):
         return False
+    
+    is_not_present = (apt['ad_id'] not in [row['link'] for row in rows])
 
-    return (apt['ad_id'] not in [row['link'] for row in rows])
+    return is_not_present
 
 
 for (i, apt) in enumerate(filter(filter_apartments, apartments)):
@@ -46,5 +48,8 @@ for (i, apt) in enumerate(filter(filter_apartments, apartments)):
     ]
     # Insert the attributes into the google sheet
     print("Adding row: {}".format(new_row))
-    sheet.append_row(
-        new_row, value_input_option='USER_ENTERED')
+    sheet.insert_row(
+        new_row, 
+        value_input_option='USER_ENTERED',
+        index=len(rows) + i+2
+    )
