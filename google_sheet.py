@@ -1,5 +1,9 @@
 import gspread
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 def authenticate_google_sheet():
     # Authenticate with Google
