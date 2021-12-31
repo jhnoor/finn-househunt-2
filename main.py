@@ -44,7 +44,7 @@ for (i, apt) in enumerate(filter(filter_apartments, apartments)):
         viewing_times[0] if len(viewing_times) > 0 else None,
         viewing_times[1] if len(viewing_times) > 1 else None,
         datetime.now().strftime("%Y-%m-%d %H.%M.%S"),
-        '=(1/G{0}/0,000001)+(D{0}/100000000)*0,2'.format(len(rows) + i+2),
+        '=(1/G{0}/0,000001)+(D{0}/100000000)*0,2-(H{0}/100000)'.format(len(rows) + i+2),
     ]
     # Insert the attributes into the google sheet
     print("Adding row: {}".format(new_row))
