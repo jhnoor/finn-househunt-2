@@ -1,4 +1,5 @@
-requests
-bs4
-gspread
-python-dotenv
+requests==2.26.0
+beautifulsoup4==4.10.0
+gspread==5.1.1
+python-dotenv==0.19.2
+toolz==0.11.2

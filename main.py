@@ -19,6 +19,7 @@ def filter_apartments(apt):
 
     return is_not_present
 
+print("Found {} new apartments".format(len(apartments)))
 
 for (i, apt) in enumerate(filter(filter_apartments, apartments)):
     # Parses date from strings like "2022-01-06T15:30:00.000+00:00"
@@ -44,7 +45,10 @@ for (i, apt) in enumerate(filter(filter_apartments, apartments)):
         viewing_times[0] if len(viewing_times) > 0 else None,
         viewing_times[1] if len(viewing_times) > 1 else None,
         datetime.now().strftime("%Y-%m-%d %H.%M.%S"),
-        '=(1/G{0}/0,000001)+(D{0}/100000000)*0,2-(H{0}/100000)'.format(len(rows) + i+2),
+        '=(1/G{0}/0,000001)+(D{0}/100000000)*0,2-(H{0}/100000)+V{0}'.format(len(rows) + i+2),
+        None,
+        None,
+        '=SWITCH(N{0}; "vest"; 3;"nordvest"; -2;"nord"; -3;"nordøst"; -3;"øst"; 1;"sørøst"; 2;"sør"; 2;"sørvest"; 4)'.format(len(rows) + i+2),
     ]
     # Insert the attributes into the google sheet
     print("Adding row: {}".format(new_row))
