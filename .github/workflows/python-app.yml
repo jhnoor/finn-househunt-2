@@ -6,9 +6,7 @@ name: house-hunt
 on:
   push:
     branches: [ main ]
-  schedule:
-    - cron: '8 * * * *' 
-
+ 
 jobs:
   build:
 
